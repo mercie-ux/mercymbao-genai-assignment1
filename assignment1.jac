@@ -14,7 +14,7 @@ walker RPSGame {
 
 node turn {
     has options: list[str] = ["rock", "paper", "scissors"];
-    has computer_choice: str = options[random.randint(0, 2)];
+    has computer_choice: str = "";
 }
 
 def determine_winner(player: str, computer: str) -> str {
@@ -32,7 +32,28 @@ def determine_winner(player: str, computer: str) -> str {
 
 
 with entry:__main__ {
-    root spawn RPSGame(player_choice="rock");
-    root spawn RPSGame(player_choice="paper");
-    root spawn RPSGame(player_choice="scissors"); 
+    # Get player input
+    print("Welcome to Rock Paper Scissors Game!");
+
+    # when user wants to play again
+    play_again = "yes";
+    valid_choices = ["rock", "paper", "scissors"];
+
+    while play_again.lower() in ["yes", "y"] {
+        #Get player input
+        player_input = input("Enter your choice (rock/paper/scissors): ").lower().strip();
+        #validate input
+        valid_choices = ["rock", "paper", "scissors"];
+        if player_input in valid_choices {
+            root spawn RPSGame(player_choice=player_input);
+        } else {
+            print("Invalid choice! Please choose rock, paper,scissors.");
+            continue;
+        }
+        #Ask if player wants to play again
+        play_again = input("Play again? (yes/no): ").strip();
+    }
+    print("Thanks for playing! Goodbye! 👋");
+    
+
 }
