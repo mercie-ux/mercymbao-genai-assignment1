@@ -31,9 +31,11 @@ Before running this game, make sure you have:
    git clone https://github.com/mercie-ux/mercymbao-genai-assignment1
    ```
 2. Ensure you have the following files in your project directory:
-assignment1.jac (or your main game file)
+```
+assignment1.jac
+```
 
-3. Activate your Jac environment (if using a virtual environment,) :
+4. Activate your Jac environment (if using a virtual environment,) :
 ```
 # for windows
 jac-env\Scripts\activate
